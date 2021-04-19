@@ -7,12 +7,18 @@ import { TecladoComponent } from './teclado/teclado.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { HistoricoComponent } from './historico/historico.component';
+import { StudyListComponent } from './study-list/study-list.component';
+import { StudyCardComponent } from './study-card/study-card.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TecladoComponent,
-    HistoricoComponent
+    HistoricoComponent,
+    StudyListComponent,
+    StudyCardComponent,
   ],
   imports: [
     BrowserModule,
