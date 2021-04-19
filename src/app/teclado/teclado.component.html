@@ -1,0 +1,32 @@
+<h2>{{ title }}</h2>
+
+<div class="container">
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <input type="text" [value]="resultado" id="display" readonly="readonly"/>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <button (click)="clicar('0')" class="button">0</button>
+                <button (click)="clicar('1')"class="button">1</button>
+            </div>
+        
+            <div class="row">
+                <button (click)="clicar('+')" class="button button2">+</button>
+                <button (click)="finalizar()" class="button button2">=</button>
+            </div>
+        </div>
+        <div class="col-6">
+            <button (click)="limpar()" class="button button3 button4">CE</button>
+        </div>
+    </div>
+    
+
+    
+    
+
+</div>
