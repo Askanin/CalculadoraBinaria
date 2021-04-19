@@ -8,11 +8,13 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { HistoricoComponent } from './historico/historico.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     TecladoComponent,
-    HistoricoComponent
+    HistoricoComponent,
+    
   ],
   imports: [
     BrowserModule,

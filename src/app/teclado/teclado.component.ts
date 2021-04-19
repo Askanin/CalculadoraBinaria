@@ -19,8 +19,65 @@ export class TecladoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public caractere: string = "";
+  public expressao: string = "";
+
+  public ehOperador(caractere:string):boolean{
+    if(caractere == '+'){
+      return true;
+    } else{
+      return false;
+    }
+  }
+  
+  public ehZero(caractere:string):boolean{
+    if(caractere == '0'){
+      return true;
+    } else{
+      return false;
+    }
+  }
+  
+  
+  ehZeroDepoisDeOperador(caractere:string, expressao:string):boolean{
+    let ultimoCaractere = expressao[expressao.length-1];
+    if(this.ehOperador(ultimoCaractere) && this.ehZero(caractere)){
+      return true;
+    } else{
+      return false;
+    }
+  }
+  
+  ehOperadorDepoisDeOperador(carcatere:string, expressao:string):boolean{
+    let ultimoCaractere = expressao[expressao.length-1];
+    if(this.ehOperador(ultimoCaractere) && this.ehOperador(carcatere)){
+      return true;
+    } else{
+      return false;
+    }
+  }
+  
+  ehValidaExpressao(caractere:string, expressao:string):boolean{
+    let valido:boolean = true;
+    if(expressao.length==0){
+      if(this.ehOperador(caractere) || this.ehZero(caractere)){
+        valido=false;
+      }
+    } else{
+      if(this.ehZeroDepoisDeOperador(caractere, expressao)){
+        valido=false;
+      } else if (this.ehOperadorDepoisDeOperador(caractere, expressao)){
+        valido=false;
+      }
+    }
+    return valido;
+  }
+  
+  
   clicar(valor:string){
-    this.resultado += valor;
+    if(this.ehValidaExpressao(valor, this.resultado)){
+      this.resultado += valor;
+    }
   }
   // montarResultado(digito:string){
   //   this.resultado+=digito;
@@ -31,13 +88,13 @@ export class TecladoComponent implements OnInit {
   }
 
   finalizar(){
-    // this.resultado=eval(this.resultado);
+    
 
     let x = this.resultado.split("+");
-    // let stringExemplo = "111+0010+111";
+    
     let auxiliar = this.resultado.split("+");
     let total = 0;
-    // console.log(auxiliar);
+    
 
     
 
@@ -51,10 +108,15 @@ export class TecladoComponent implements OnInit {
 
   this.emitirDado.emit(total.toString());  //Evento para enviar o resultado pro Historico
 
-  this.resultado= total.toString(2);
-  // console.log(foda);
+  if(this.resultado==""){
+    this.resultado="";
+  } else{
+    this.resultado= total.toString(2);
+ 
   }
 
-  
+} 
 
 }
+
+
